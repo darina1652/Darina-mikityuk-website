@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { works } from '../data/site';
+---
+<Layout title="Works">
+  <PageIntro title="Selected Works" copy="An evolving selection of paintings and material studies made between 2022 and 2025." />
+  <section class="works-list section-pad">
+    {works.map((work, i) => <article class:list={['archive-work', `ratio-${work.ratio}`]} data-reveal>
+      <div class="archive-index">{String(i + 1).padStart(2, '0')}</div>
+      <div class="image-wrap"><img src={work.image} alt={work.title} loading="lazy" /></div>
+      <div class="work-meta"><h2>{work.title}</h2><p>{work.medium}</p><p>{work.year}</p></div>
+    </article>)}
+  </section>
+</Layout>

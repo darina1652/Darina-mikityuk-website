@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { projects, works } from '../data/site';
+---
+<Layout>
+  <section class="hero">
+    <div class="hero-copy" data-reveal>
+      <p class="eyebrow">Visual artist · Berlin / Kyiv</p>
+      <h1>Forms of quiet<br /><em>resistance.</em></h1>
+    </div>
+    <figure class="hero-art" data-reveal>
+      <img src="/images/hero.svg" alt="Abstract artwork in deep blue and warm earth tones" />
+      <figcaption><span>Untitled (Blue Fold), 2025</span><span>01 / 06</span></figcaption>
+    </figure>
+    <p class="hero-note">Painting, material, and space<br />in continuous conversation.</p>
+  </section>
+
+  <section class="featured section-pad">
+    <div class="section-heading" data-reveal><p class="eyebrow">Selected works</p><a class="text-link" href="/works">View all works <span>↗</span></a></div>
+    <div class="featured-grid">
+      {works.slice(0, 3).map((work, i) => (
+        <article class:list={['work-card', `card-${i + 1}`]} data-reveal>
+          <a href="/works"><div class="image-wrap"><img src={work.image} alt={work.title} loading="lazy" /></div></a>
+          <div class="work-meta"><h2>{work.title}</h2><p>{work.medium}<br />{work.year}</p></div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="statement section-pad" data-reveal>
+    <p class="eyebrow">Practice</p>
+    <p class="statement-text">Darina Mikityuk’s practice explores the tension between memory and material — creating spaces where the intimate becomes <em>architectural.</em></p>
+    <a class="round-link" href="/about" aria-label="Read about Darina">About the artist <span>↗</span></a>
+  </section>
+
+  <section class="project-feature section-pad">
+    <div class="section-heading" data-reveal><p class="eyebrow">Current project</p><p>Berlin · 2025</p></div>
+    <a href="/projects" class="project-image" data-reveal><img src={projects[0].image} alt={projects[0].title} loading="lazy" /><span class="project-title">{projects[0].title}<small>Solo exhibition</small></span></a>
+  </section>
+</Layout>

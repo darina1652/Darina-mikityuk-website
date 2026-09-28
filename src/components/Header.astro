@@ -1,0 +1,31 @@
+---
+import { navigation } from '../data/site';
+
+const current = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <a class="wordmark" href="/" aria-label="Darina Mikityuk, home">
+    <span>Darina</span><span>Mikityuk</span>
+  </a>
+  <button class="menu-button" aria-expanded="false" aria-controls="main-nav"><span>Menu</span><i></i></button>
+  <nav id="main-nav" aria-label="Main navigation">
+    <ul>
+      {navigation.map(([label, href]) => (
+        <li><a href={href} aria-current={current.startsWith(href) ? 'page' : undefined}>{label}</a></li>
+      ))}
+    </ul>
+    <p class="nav-note">Contemporary visual artist<br />Berlin · Kyiv</p>
+  </nav>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.menu-button');
+  const nav = document.querySelector<HTMLElement>('#main-nav');
+  button?.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('is-open', !open);
+    document.body.classList.toggle('menu-open', !open);
+  });
+</script>

@@ -1,0 +1,5 @@
+---
+import Layout from '../layouts/Layout.astro'; import PageIntro from '../components/PageIntro.astro';
+const items = [['2025','At the Edge of the Visible','Studio Journal','Interview'],['2024','Soft Architecture: Darina Mikityuk','Field Notes','Feature'],['2023','New Materialities in Painting','Art & Context','Review'],['2022','Emerging Voices: Kyiv to Berlin','Neue Räume','Profile']];
+---
+<Layout title="Press"><PageIntro title="Press & Publications" /><section class="press-list section-pad">{items.map((item) => <a href="#" data-reveal><span>{item[0]}</span><h2>{item[1]}</h2><p>{item[2]} · {item[3]}</p><i>↗</i></a>)}</section><p class="press-note">For press enquiries, high-resolution images and the artist’s full CV, please <a href="/contact">contact the studio</a>.</p></Layout>

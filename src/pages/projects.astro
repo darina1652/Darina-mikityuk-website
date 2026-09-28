@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { projects } from '../data/site';
+---
+<Layout title="Projects"><PageIntro title="Projects & Exhibitions" copy="Installations, exhibitions and ongoing collaborations that extend the studio practice into space." />
+<section class="project-list section-pad">{projects.map((project, i) => <article data-reveal><div class="project-number">0{i + 1}</div><img src={project.image} alt={project.title} loading="lazy" /><div class="project-info"><h2>{project.title}</h2><p>{project.type}</p><p>{project.place} · {project.year}</p></div></article>)}</section></Layout>

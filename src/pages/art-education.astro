@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+
+const programs = [
+  ['01', 'Museum Workshops', 'Künstlerisch angeleitete Formate, die Sammlungen, Räume und Materialien durch genaues Beobachten neu zugänglich machen.', 'Museen · Kulturinstitutionen'],
+  ['02', 'Schools', 'Altersgerechte Workshops für Schulklassen, in denen Wahrnehmung, eigenes Gestalten und gemeinsames Reflektieren verbunden werden.', 'Schulen · Bildungsprojekte'],
+  ['03', 'Creative Programs', 'Individuell entwickelte Programme für Gruppen und Institutionen — vom kompakten Ateliertermin bis zur langfristigen Zusammenarbeit.', 'Auf Anfrage'],
+];
+---
+<Layout title="Art Education">
+  <PageIntro eyebrow="Kunstvermittlung" title="Sehen. Denken. Machen." copy="Künstlerische Bildung als offener Raum für Wahrnehmung, Austausch und eigenes Handeln." />
+  <section class="education-intro section-pad" data-reveal>
+    <p class="eyebrow">Art Education</p>
+    <p>Die Vermittlung ist ein eigenständiger Teil meiner künstlerischen Praxis. Gemeinsam mit Museen, Schulen und freien Initiativen entstehen Formate, die Neugier wecken und unterschiedliche Perspektiven willkommen heißen.</p>
+  </section>
+  <section class="offer-list section-pad">
+    {programs.map((program) => <article data-reveal><span>{program[0]}</span><h2>{program[1]}</h2><p>{program[2]}</p><small>{program[3]}</small></article>)}
+  </section>
+  <div class="contact-band" data-reveal><p>Ein gemeinsames Programm entwickeln?</p><a href="/contact">Gespräch beginnen ↗</a></div>
+</Layout>

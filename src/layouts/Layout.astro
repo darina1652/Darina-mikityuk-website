@@ -2,18 +2,19 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { defaultLocale, type Locale } from '../data/site';
 
-interface Props { title?: string; description?: string; }
-const { title, description = 'Darina Mikityuk is a contemporary visual artist working across painting, installation and material-led practice.' } = Astro.props;
+interface Props { title?: string; description?: string; locale?: Locale; }
+const { title, locale = defaultLocale, description = 'Darina Mikityuk ist eine bildende Künstlerin, die mit Malerei, Installation und materialbasierten Praktiken arbeitet.' } = Astro.props;
 const pageTitle = title ? `${title} — Darina Mikityuk` : 'Darina Mikityuk — Visual Artist';
 ---
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f2f1ed" />
+    <meta name="theme-color" content="#f4f2ed" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{pageTitle}</title>
   </head>

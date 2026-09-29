@@ -12,10 +12,10 @@ const current = Astro.url.pathname;
   <nav id="main-nav" aria-label="Main navigation">
     <ul>
       {navigation.map(([label, href]) => (
-        <li><a href={href} aria-current={current.startsWith(href) ? 'page' : undefined}>{label}</a></li>
+        <li><a href={href} aria-current={(href === '/' ? current === '/' : current.startsWith(href)) ? 'page' : undefined}>{label}</a></li>
       ))}
     </ul>
-    <p class="nav-note">Contemporary visual artist<br />Berlin · Kyiv</p>
+    <p class="nav-note">Bildende Künstlerin<br />Berlin · Kyiv</p>
   </nav>
 </header>
 
@@ -28,4 +28,9 @@ const current = Astro.url.pathname;
     nav?.classList.toggle('is-open', !open);
     document.body.classList.toggle('menu-open', !open);
   });
+  nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    button?.setAttribute('aria-expanded', 'false');
+    nav.classList.remove('is-open');
+    document.body.classList.remove('menu-open');
+  }));
 </script>

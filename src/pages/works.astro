@@ -4,7 +4,7 @@ import PageIntro from '../components/PageIntro.astro';
 import { works } from '../data/site';
 ---
 <Layout title="Works">
-  <PageIntro title="Selected Works" copy="An evolving selection of paintings and material studies made between 2022 and 2025." />
+  <PageIntro eyebrow="Archiv" title="Selected Works" copy="Eine fortlaufende Auswahl von Malereien und Materialstudien, entstanden zwischen 2022 und 2025." />
   <section class="works-list section-pad">
     {works.map((work, i) => <article class:list={['archive-work', `ratio-${work.ratio}`]} data-reveal>
       <div class="archive-index">{String(i + 1).padStart(2, '0')}</div>

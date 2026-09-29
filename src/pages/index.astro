@@ -1,22 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { projects, works } from '../data/site';
+import { defaultLocale, projects, siteCopy, works } from '../data/site';
+const copy = siteCopy[defaultLocale];
 ---
 <Layout>
   <section class="hero">
     <div class="hero-copy" data-reveal>
-      <p class="eyebrow">Visual artist · Berlin / Kyiv</p>
-      <h1>Forms of quiet<br /><em>resistance.</em></h1>
+      <p class="eyebrow">{copy.location}</p>
+      <h1>{copy.heroTitle[0]}<br /><em>{copy.heroTitle[1]}</em></h1>
     </div>
     <figure class="hero-art" data-reveal>
       <img src="/images/hero.svg" alt="Abstract artwork in deep blue and warm earth tones" />
       <figcaption><span>Untitled (Blue Fold), 2025</span><span>01 / 06</span></figcaption>
     </figure>
-    <p class="hero-note">Painting, material, and space<br />in continuous conversation.</p>
+    <p class="hero-note">{copy.heroNote}</p>
   </section>
 
   <section class="featured section-pad">
-    <div class="section-heading" data-reveal><p class="eyebrow">Selected works</p><a class="text-link" href="/works">View all works <span>↗</span></a></div>
+    <div class="section-heading" data-reveal><p class="eyebrow">{copy.selectedWorks}</p><a class="text-link" href="/works">{copy.viewAll} <span>↗</span></a></div>
     <div class="featured-grid">
       {works.slice(0, 3).map((work, i) => (
         <article class:list={['work-card', `card-${i + 1}`]} data-reveal>
@@ -28,13 +29,13 @@ import { projects, works } from '../data/site';
   </section>
 
   <section class="statement section-pad" data-reveal>
-    <p class="eyebrow">Practice</p>
-    <p class="statement-text">Darina Mikityuk’s practice explores the tension between memory and material — creating spaces where the intimate becomes <em>architectural.</em></p>
-    <a class="round-link" href="/about" aria-label="Read about Darina">About the artist <span>↗</span></a>
+    <p class="eyebrow">{copy.practice}</p>
+    <p class="statement-text">{copy.statement}</p>
+    <a class="round-link" href="/about" aria-label="Mehr über Darina Mikityuk">{copy.aboutLink} <span>↗</span></a>
   </section>
 
   <section class="project-feature section-pad">
-    <div class="section-heading" data-reveal><p class="eyebrow">Current project</p><p>Berlin · 2025</p></div>
-    <a href="/projects" class="project-image" data-reveal><img src={projects[0].image} alt={projects[0].title} loading="lazy" /><span class="project-title">{projects[0].title}<small>Solo exhibition</small></span></a>
+    <div class="section-heading" data-reveal><p class="eyebrow">{copy.currentProject}</p><p>Berlin · 2025</p></div>
+    <a href="/projects" class="project-image" data-reveal><img src={projects[0].image} alt={projects[0].title} loading="lazy" /><span class="project-title">{projects[0].title}<small>{projects[0].type}</small></span></a>
   </section>
 </Layout>

@@ -3,7 +3,7 @@ import { extname, join } from 'node:path';
 
 const root = new URL('..', import.meta.url).pathname;
 const pagesDirectory = join(root, 'src/pages');
-const requiredRoutes = ['index', 'works', 'projects', 'about', 'workshops', 'press', 'contact'];
+const requiredRoutes = ['index', 'works', 'projects', 'art-education', 'about', 'contact'];
 const errors = [];
 
 for (const route of requiredRoutes) {
